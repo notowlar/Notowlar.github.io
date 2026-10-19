@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="George Clarke: graphic designer, marketer and model. Portfolio of design, marketing, 3D, video and modelling work.">
+<title>George Clarke Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Pinyon+Script&family=VT323&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&display=swap">
+<style>
+/* Layout: one long scroll of chapters (you → OMS work → album art → poster archive → 3D → modelling → contact), framed by a retro OS taskbar */
+:root{
+  --deep:#0A1F14;--forest:#143826;--moss:#2D5A3D;--fern:#7FA67A;--cream:#F2ECD6;--lime:#C9F25C;
+  --chrome:linear-gradient(180deg,#ffffff 0%,#dfe8dc 38%,#7f9a86 52%,#e9f1e4 64%,#b7c9b6 100%);
+  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-script:"Pinyon Script","Brush Script MT",cursive;
+  --f-pixel:"VT323","Courier New",monospace;
+  --f-body:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutR:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--deep);color:var(--cream);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:clip}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.08;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+[hidden]{display:none!important}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+section{position:relative}
+h2{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;font-size:clamp(34px,7vw,88px);margin:0;text-wrap:balance}
+h3.sub{font-family:var(--f-pixel);font-weight:400;font-size:26px;letter-spacing:.06em;text-transform:uppercase;margin:0;display:flex;align-items:center;gap:12px}
+h3.sub::after{content:"";flex:1;height:2px;background:var(--moss)}
+.chrome{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(0,0,0,.35))}
+.label{font-family:var(--f-pixel);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.script{font-family:var(--f-script);font-weight:400;text-transform:none;letter-spacing:0}
+p{max-width:62ch;margin:0}
+.lede{font-size:19px}
+
+/* taskbar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:linear-gradient(#1d4a31,#0f2a1b);border-bottom:2px solid #000;box-shadow:inset 0 1px 0 #4f8a62}
+.bar .wrap{display:flex;align-items:center;gap:10px;height:46px}
+.start{font-family:var(--f-pixel);font-size:22px;background:linear-gradient(#d8f78d,#9ccd2f);color:#0A1F14;border:2px solid #000;box-shadow:inset 1px 1px 0 #fff;padding:0 12px;height:32px;display:flex;align-items:center;gap:6px;text-decoration:none;flex-shrink:0}
+.bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.bar nav a{font-family:var(--f-pixel);font-size:20px;text-decoration:none;padding:2px 10px;border:1px solid transparent;white-space:nowrap}
+.bar nav a:hover,.bar nav a:focus-visible{border-color:var(--lime);color:var(--lime);outline:none}
+.tray{display:flex;align-items:center;gap:8px;font-family:var(--f-pixel);font-size:20px;flex-shrink:0}
+.tray button{font:inherit;background:var(--deep);color:var(--lime);border:1px solid var(--moss);padding:0 8px;cursor:pointer}
+.tray button:focus-visible{outline:2px solid var(--lime)}
+#clock{border-left:1px solid var(--moss);padding-left:8px}
+@media (max-width:640px){#clock{display:none}.bar nav a{padding:2px 6px}}
+
+/* guide notes */
+.note{font-family:var(--f-pixel);font-size:19px;line-height:1.1;color:#0A1F14;background:var(--lime);padding:8px 10px;border:2px solid #000;box-shadow:4px 4px 0 #000;max-width:300px;position:relative;z-index:5}
+.note b{display:block;font-weight:400;opacity:.7}
+body.guide-off .note{display:none}
+
+/* reveal */
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),clip-path 1.1s cubic-bezier(.7,0,.2,1)}
+.rv.pending{opacity:0;transform:translateY(50px)}
+.rv.wipe.pending{opacity:1;transform:none;clip-path:inset(0 100% 0 0)}
+.rv.wipe{clip-path:inset(0 0 0 0)}
+.rv.pop.pending{transform:scale(.7) rotate(var(--r,0deg))}
+
+/* hero */
+.hero{padding-block:48px 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:end}
+.hero h1{font-family:var(--f-display);font-weight:900;font-size:clamp(38px,6.6vw,92px);line-height:.86;margin:0;text-transform:uppercase;letter-spacing:-.02em}
+.hero h1 .ch{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;animation:drop .8s cubic-bezier(.2,.8,.2,1.2) both}
+@keyframes drop{from{transform:translateY(-60%) rotate(-8deg);opacity:0}}
+.hero .name{font-family:var(--f-script);font-size:clamp(70px,10.5vw,170px);color:var(--lime);display:block;margin:-.2em 0 0 .2em;line-height:1;transform:rotate(-6deg);animation:fadeIn 1.2s .9s both}
+@keyframes fadeIn{from{opacity:0;transform:rotate(-6deg) translateX(-30px)}}
+.hero .intro{display:grid;gap:14px;margin-top:22px}
+.hero .side{position:relative;aspect-ratio:1200/1625;max-width:100%}
+.hero .arch{position:absolute;left:12%;right:4%;top:22%;bottom:0;border-radius:400px 400px 0 0;border:2px solid var(--cream);border-bottom:0;
+  background:radial-gradient(circle at 50% 30%,rgba(201,242,92,.35),transparent 55%),repeating-linear-gradient(0deg,rgba(242,236,214,.05) 0 2px,transparent 2px 6px),linear-gradient(180deg,var(--moss),var(--forest))}
+.hero .me{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain;object-position:bottom;filter:drop-shadow(10px 8px 0 rgba(0,0,0,.45));animation:rise 1.2s .3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{transform:translateY(40px);opacity:0}}
+.spark{position:absolute;color:var(--lime);font-size:30px;animation:twinkle 2.4s infinite ease-in-out;pointer-events:none}
+@keyframes twinkle{50%{transform:scale(.4) rotate(90deg);opacity:.4}}
+.marquee{margin-top:36px;background:var(--lime);color:var(--deep);border-block:2px solid #000;overflow:hidden;white-space:nowrap;transform:rotate(-1.5deg);width:104%;margin-left:-2%}
+.marquee div{display:inline-block;font-family:var(--f-display);font-weight:900;font-size:24px;padding:10px 0;animation:mq 26s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (max-width:760px){.hero h1{font-size:12vw}.hero .wrap{grid-template-columns:1fr}.hero .side{max-width:340px}}
+
+/* about collage */
+.about{padding-block:110px}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.collage{position:relative;height:540px}
+.collage > *{position:absolute;box-shadow:8px 8px 0 #000}
+.collage img{width:100%;height:100%!important;object-fit:cover}
+.polaroid{background:var(--cream);padding:10px 10px 34px}
+.polaroid span{position:absolute;left:12px;bottom:2px;font-family:var(--f-script);font-size:26px;color:var(--deep)}
+.collage .c1{width:54%;height:56%;left:0;top:0;transform:rotate(-4deg);z-index:3}
+.collage .c2{width:42%;height:30%;right:0;top:6%;transform:rotate(5deg);border:2px solid var(--cream);z-index:2}
+.collage .c3{width:36%;height:44%;left:44%;bottom:0;transform:rotate(-2deg);border:2px solid var(--cream);z-index:1}
+.collage .stamp{box-shadow:none;left:4%;bottom:6%;z-index:4;font-family:var(--f-script);font-size:54px;color:var(--lime);transform:rotate(-12deg)}
+.about .txt{display:grid;gap:18px}
+.hl{background:var(--lime);color:var(--deep);padding:0 .25em}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr}.collage{height:440px}}
+
+/* window */
+.win{background:#d9d4c0;color:#0A1F14;border:2px solid #000;box-shadow:inset -2px -2px 0 #7a7663,inset 2px 2px 0 #fff,8px 8px 0 #000}
+.win .tb{display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(90deg,#143826,#4b8a5c);color:var(--cream);font-family:var(--f-pixel);font-size:20px;padding:2px 4px 2px 10px}
+.win .tb span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.win .tb span:last-child{flex-shrink:0}
+.win .tb i{display:inline-grid;place-items:center;width:20px;height:18px;background:#d9d4c0;color:#000;border:1px solid #000;font-style:normal;font-size:16px;margin-left:3px;box-shadow:inset 1px 1px 0 #fff}
+.win .body{padding:20px}
+.skills{padding-block:20px 110px}
+.skills .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.badges span{font-family:var(--f-pixel);font-size:20px;padding:2px 12px;border:2px solid #0A1F14;background:#fff;box-shadow:3px 3px 0 #0A1F14}
+.badges span.k{background:var(--lime)}
+.win h3{font-family:var(--f-display);font-size:22px;margin:0 0 6px}
+.prog{height:22px;border:2px inset #fff;background:#fff;padding:2px;margin-top:16px}
+.prog div{height:100%;width:0;background:repeating-linear-gradient(90deg,#143826 0 12px,transparent 12px 15px);transition:width 2.4s steps(20)}
+.prog.on div{width:86%}
+@media (max-width:860px){.skills .wrap{grid-template-columns:1fr}}
+
+/* experience */
+.exp{background:var(--forest);padding-block:100px;border-block:2px solid #000}
+.exp .wrap{display:grid;gap:40px}
+.exp .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px}
+.roles{border-top:2px solid var(--cream)}
+.role{display:grid;grid-template-columns:160px 1fr 1.3fr;gap:24px;padding-block:22px;border-bottom:2px solid var(--cream);align-items:baseline}
+.role .when{font-family:var(--f-pixel);font-size:22px;color:var(--lime);font-variant-numeric:tabular-nums}
+.role h4{font-family:var(--f-display);font-size:20px;margin:0;text-transform:uppercase}
+.role h4 small{display:block;font-family:var(--f-body);font-size:15px;text-transform:none;color:var(--fern);font-weight:400;margin-top:4px}
+.role ul{margin:0;padding-left:18px}
+@media (max-width:760px){.role{grid-template-columns:1fr;gap:6px}}
+
+/* OMS */
+.oms{padding-block:120px 60px}
+.oms .wrap{display:grid;gap:56px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{border:2px solid var(--cream);padding:20px;display:grid;gap:6px;background:var(--forest);align-content:start;min-width:0}
+.stat b{font-family:var(--f-display);font-size:clamp(20px,2.4vw,34px);color:var(--lime);font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap}
+.stat span{font-family:var(--f-pixel);font-size:20px;line-height:1.1}
+@media (max-width:860px){.stats{grid-template-columns:1fr 1fr}.stat{padding:14px}.stat b{font-size:min(4.8vw,34px)}.stat span{font-size:17px;overflow-wrap:anywhere}}
+.wide-shot{border:2px solid var(--cream);box-shadow:10px 10px 0 #000;cursor:zoom-in;width:100%}
+
+/* galleries */
+.gallery{columns:4 220px;column-gap:20px}
+.gallery figure{break-inside:avoid;margin:0 0 22px;display:grid;gap:8px}
+.gallery button{all:unset;cursor:zoom-in;display:block;border:2px solid var(--cream);box-shadow:6px 6px 0 #000;transition:transform .35s cubic-bezier(.2,.8,.2,1.3),box-shadow .35s,opacity .9s;background:var(--forest)}
+.gallery button:hover,.gallery button:focus-visible{transform:rotate(var(--t,-2deg)) scale(1.03);box-shadow:10px 10px 0 var(--lime)}
+.gallery button:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+.gallery figure:nth-child(even) button{--t:2deg}
+.gallery figcaption{font-family:var(--f-pixel);font-size:19px;line-height:1.1;display:flex;justify-content:space-between;gap:8px}
+.gallery figcaption em{font-style:normal;color:var(--fern);text-align:right;flex-shrink:0}
+@media (max-width:640px){
+  .gallery{columns:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 10px;align-items:start}
+  .gallery figure{margin:0;gap:5px;min-width:0}
+  .gallery button{border-width:1.5px;box-shadow:3px 3px 0 #000}
+  .gallery button:hover,.gallery button:focus-visible{box-shadow:5px 5px 0 var(--lime)}
+  .archive .gallery button:hover,.archive .gallery button:focus-visible{box-shadow:5px 5px 0 var(--moss)}
+  .gallery figcaption{font-size:14px;display:block;overflow-wrap:anywhere}
+  .gallery figcaption em{display:none}
+  .rv.pop.pending{transform:scale(.9)}
+}
+
+/* motion */
+.motion{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+.motion .stack{display:grid;gap:24px}
+.motion-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:-32px}
+.motion-pair video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover}
+.motion-pair .win .body{padding:6px}
+.motion-pair .cap{font-family:var(--f-pixel);font-size:19px;padding:6px 4px 2px;line-height:1.15}
+@media (max-width:860px){.motion-pair{grid-template-columns:1fr;margin-top:-32px}}
+.motion video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover}
+.motion .win .body{padding:6px}
+.motion .cap{font-family:var(--f-pixel);font-size:19px;padding:6px 4px 2px;line-height:1.15}
+@media (max-width:860px){.motion{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .motion{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .motion > .win:first-child{grid-column:1/-1}
+  .motion .stack{display:contents}
+  .motion-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:-44px}
+  .motion .win,.motion-pair .win{box-shadow:inset -2px -2px 0 #7a7663,inset 2px 2px 0 #fff,4px 4px 0 #000;min-width:0}
+  .motion .win .body,.motion-pair .win .body{padding:4px}
+  .motion .win .tb,.motion-pair .win .tb{font-size:15px;padding:1px 3px 1px 6px}
+  .motion .win .tb i,.motion-pair .win .tb i{width:14px;height:13px;font-size:11px}
+  .motion .cap,.motion-pair .cap{font-size:14px;padding:4px 2px 1px}
+}
+
+/* vinyl */
+.proj{padding-block:120px;overflow:hidden;background:linear-gradient(180deg,var(--deep),#0f2619)}
+.proj .wrap{display:grid;gap:40px}
+.vinyl-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.vinyl-stage{position:relative;aspect-ratio:1.55;max-width:100%}
+.sleeve{position:absolute;z-index:2;left:0;top:0;height:100%;aspect-ratio:1;box-shadow:12px 12px 0 #000;border:2px solid #000;background:#000}
+.sleeve img{width:100%;height:100%!important;object-fit:cover;transition:opacity .25s}
+.disc{position:absolute;z-index:1;height:94%;aspect-ratio:1;left:1%;top:3%;border-radius:50%;
+  background:repeating-radial-gradient(circle,#101010 0 2px,#1d1d1d 2px 4px);
+  box-shadow:0 0 0 2px #000,0 20px 40px rgba(0,0,0,.6)}
+.disc .spinner{position:absolute;inset:0;border-radius:50%;animation:spin 3.2s linear infinite}
+.disc .lbl{position:absolute;inset:32%;border-radius:50%;background-size:cover;background-position:center;border:3px solid #0A1F14}
+.disc .lbl::after{content:"";position:absolute;left:50%;top:50%;width:8%;height:8%;margin:-4% 0 0 -4%;border-radius:50%;background:#0A1F14}
+.disc::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 10%,rgba(255,255,255,.16) 14%,transparent 20% 60%,rgba(255,255,255,.1) 64%,transparent 70%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tee{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,rgba(201,242,92,.25),transparent 62%)}
+.tee svg{height:92%;width:auto;max-width:100%;filter:drop-shadow(14px 16px 0 rgba(0,0,0,.55));animation:sway 5s ease-in-out infinite;transform-origin:50% 0}
+@keyframes sway{50%{transform:rotate(1.6deg)}}
+.vinyl-stage.is-tee .disc,.vinyl-stage.is-tee .sleeve{display:none}
+.covers{display:flex;gap:10px;flex-wrap:wrap}
+.covers button{font-family:var(--f-pixel);font-size:21px;background:transparent;color:var(--cream);border:2px solid var(--cream);padding:2px 14px;cursor:pointer}
+.covers button[aria-pressed="true"]{background:var(--lime);color:var(--deep);border-color:#000;box-shadow:3px 3px 0 #000}
+.covers button:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.ptag{display:flex;flex-wrap:wrap;gap:8px}
+.ptag span{font-family:var(--f-pixel);font-size:18px;border:1px solid var(--fern);padding:0 10px}
+@media (max-width:860px){.vinyl-grid{grid-template-columns:1fr}}
+
+/* archive */
+.archive{padding-block:120px;background:var(--cream);color:var(--deep)}
+.archive .wrap{display:grid;gap:44px}
+.archive .label{color:var(--moss)}
+.archive .gallery button{border-color:var(--deep);background:#fff}
+.archive .gallery button:hover,.archive .gallery button:focus-visible{box-shadow:10px 10px 0 var(--moss)}
+.archive .gallery figcaption em{color:var(--moss)}
+
+/* 3D */
+.three-d{padding-block:120px}
+.three-d .wrap{display:grid;gap:32px}
+.three-d .win .body{padding:6px;overflow:hidden}
+.three-d img{width:100%;cursor:zoom-in;transform-origin:50% 50%;will-change:transform}
+
+/* model */
+.model{background:var(--deep);border-top:2px solid #000}
+.model .stick{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:28px}
+.model .head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;width:100%}
+.strip{display:flex;gap:26px;padding-left:var(--gut);padding-right:60px;will-change:transform;align-items:center;width:max-content}
+.frame{flex:0 0 auto;height:min(56vh,480px);background:#000;padding:14px 10px;position:relative;cursor:zoom-in;border:0;font:inherit;color:inherit}
+.frame::before,.frame::after{content:"";position:absolute;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,transparent 0 8px,#e6e0c8 8px 16px);opacity:.7}
+.frame::before{top:2px}.frame::after{bottom:2px}
+.frame img{height:100%!important;width:auto;max-width:none;object-fit:cover}
+.frame em{position:absolute;bottom:-28px;left:0;font-family:var(--f-pixel);font-style:normal;color:var(--fern);font-size:18px}
+.frame:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+.comp{flex:0 0 auto;width:min(320px,80vw)}
+.comp dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;font-family:var(--f-pixel);font-size:21px}
+.comp dt{opacity:.6}
+.comp dd{margin:0}
+
+/* contact */
+.contact{padding-block:140px 80px;background:radial-gradient(ellipse at 50% 120%,#2D5A3D,var(--deep) 65%);overflow:hidden;text-align:center}
+.contact h2{font-size:clamp(44px,11vw,170px)}
+.contact .script{display:block;color:var(--lime);font-size:clamp(50px,9vw,130px);margin-top:-.35em}
+.mail{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:40px;align-items:center;max-width:100%}
+.mail code{font-family:var(--f-pixel);font-size:26px;border:2px solid var(--cream);padding:6px 16px;user-select:all;overflow-wrap:anywhere}
+.btn{font-family:var(--f-pixel);font-size:22px;background:var(--lime);color:var(--deep);border:2px solid #000;box-shadow:4px 4px 0 #000;padding:6px 16px;cursor:pointer;text-decoration:none}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+.socials{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+.socials a{font-family:var(--f-pixel);font-size:20px;border:1px solid var(--fern);padding:2px 12px;text-decoration:none}
+.socials a:hover{border-color:var(--lime);color:var(--lime)}
+footer{font-family:var(--f-pixel);font-size:18px;color:var(--fern);text-align:center;padding-block:30px}
+
+/* lightbox */
+.lb{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;box-sizing:border-box;overflow:hidden;z-index:100;background:rgba(5,15,10,.94);display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);padding:calc(12px + env(safe-area-inset-top,0px)) var(--gutR) calc(12px + env(safe-area-inset-bottom,0px)) var(--gut);gap:12px}
+.lb .lbbar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--f-pixel);font-size:22px}
+.lb .lbbar span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb .stage{position:relative;min-height:0;min-width:0}
+.lb .stage img{position:absolute;inset:0;margin:auto;width:auto;height:auto!important;max-width:calc(100% - 12px);max-height:calc(100% - 12px);object-fit:contain;box-sizing:border-box;border:2px solid var(--cream);box-shadow:8px 8px 0 #000}
+.lb .nav{display:flex;justify-content:center;gap:12px}
+
+.trail{position:fixed;pointer-events:none;z-index:80;color:var(--lime);font-size:14px;animation:fall .8s forwards}
+@keyframes fall{to{transform:translateY(30px) scale(.2);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv.pending{opacity:1;transform:none;clip-path:none}
+  html{scroll-behavior:auto}
+  .model .stick{position:static;height:auto;padding-block:80px}
+  .strip{overflow-x:auto;width:auto;max-width:100%;padding-bottom:40px}
+}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="start" href="#top">✦ start</a>
+    <nav aria-label="Sections">
+      <a href="#about">about.txt</a>
+      <a href="#oms">oms</a>
+      <a href="#album">album &amp; merch</a>
+      <a href="#archive">posters</a>
+      <a href="#threed">3d</a>
+      <a href="#model">model</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <div class="tray">
+      <span id="clock">00:00</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="label">✦ portfolio · vol. 01 · 2026</div>
+        <h1 class="chrome" id="title" aria-label="Creative Portfolio">Creative<br>Portfolio</h1>
+        <span class="name">George Clarke</span>
+        <div class="intro">
+          <p class="lede">Graphic designer, marketer and model. I make posters, magazine covers, 3D, motion and merch, and I've been on set for a music video by The 1975.</p>
+        </div>
+      </div>
+      <div class="side">
+        <div class="arch" aria-hidden="true"></div>
+        <img width="1200" height="1625" class="me" src="a/me-cutout.webp" alt="George holding a lime umbrella">
+        <span class="spark" style="top:8%;right:6%">✦</span>
+        <span class="spark" style="top:40%;left:-4%;animation-delay:.8s">✧</span>
+        <span class="spark" style="bottom:14%;right:-2%;animation-delay:1.4s;font-size:20px">✦</span>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true"><div>
+      ✦ GRAPHIC DESIGN ✦ POSTERS ✦ MAGAZINE COVERS ✦ ALBUM ART ✦ 3D &amp; MOTION ✦ MARKETING ✦ MODELLING ✦ CARS ✦ ON SET WITH THE 1975&nbsp;
+      ✦ GRAPHIC DESIGN ✦ POSTERS ✦ MAGAZINE COVERS ✦ ALBUM ART ✦ 3D &amp; MOTION ✦ MARKETING ✦ MODELLING ✦ CARS ✦ ON SET WITH THE 1975&nbsp;
+    </div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="collage">
+        <div class="polaroid c1 rv pop" data-speed="-0.06" style="--r:-5deg"><img width="1100" height="914" src="a/me-suit.webp" alt="George in a suit and orange sunglasses on the phone, holding a laptop against a blue sky" style="object-position:40% 30%"><span>me ✦</span></div>
+        <img width="1400" height="933" class="c2 rv pop" data-speed="0.08" style="--r:5deg" src="a/laptop-grass.webp" alt="Laptop, headphones and phone on grass">
+        <img width="733" height="1100" class="c3 rv pop" data-speed="-0.12" style="--r:-2deg" src="a/flower.webp" alt="Halftone flower study">
+        <span class="stamp rv">est. 2001 ✦</span>
+      </div>
+      <div class="txt">
+        <div class="label rv">✦ chapter 01</div>
+        <h2 class="rv">How it <span class="script chrome">began</span></h2>
+        <p class="lede rv">I'm George, marketing and sales assistant at One Mortgage System. I found graphic design while studying games design at college and university: I kept ending up in Adobe and Canva making the artwork around the games, and by uni graphic design and 3D modelling had become my focus.</p>
+        <p class="rv">Now I design campaigns, magazine covers and motion pieces for OMS, and make posters and merch for myself on the side. I also regularly design the menus for a pop-up restaurant in Brighton and shoot their photography on the pop-up days. Outside of design I'm a huge car person, which is where pieces like the Volvo 340GL poster come from. I'm also building a modelling portfolio, so you'll find me on both sides of the camera here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills">
+    <div class="wrap">
+      <div class="win rv wipe">
+        <div class="tb"><span>about_me.txt</span><span><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="body">
+          <h3>Hi, I'm George.</h3>
+          <p>Designer by day, model on set. I like halftone grit, folded-paper textures, old cars and campaigns that look like they were found in an old magazine.</p>
+          <div class="badges">
+            <span class="k">Photoshop</span><span>Adobe CC</span><span class="k">Canva</span><span>Mailchimp</span><span>WordPress</span><span>3ds Max</span><span>Unreal Engine</span><span>Poster design</span><span>3D motion</span><span class="k">Marketing</span><span>Photography</span>
+          </div>
+          <div class="prog" id="prog"><div></div></div>
+          <p style="font-family:var(--f-pixel);font-size:18px;margin-top:6px">loading creativity… 86%</p>
+        </div>
+      </div>
+      <div style="display:grid;gap:24px">
+        <div class="win rv wipe" style="transition-delay:.2s">
+          <div class="tb"><span>currently.exe</span><span><i>×</i></span></div>
+          <div class="body" style="display:grid;gap:10px;font-family:var(--f-pixel);font-size:21px;line-height:1.2">
+            <div>▸ working at: One Mortgage System</div>
+            <div>▸ on the side: menus + photography for a Brighton pop-up restaurant</div>
+            <div>▸ role: marketing &amp; sales assistant</div>
+                        <div>▸ open to: graphic design and marketing roles + modelling</div>
+            <div>▸ alias: @notowlar</div>
+            <div>▸ obsessed with: cars</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="exp">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="rv wipe">Work <span class="chrome">Experience</span></h2>
+      </div>
+      <div class="roles">
+        <div class="role rv"><span class="when">CURRENT</span><h4>Marketing &amp; Sales Assistant<small>One Mortgage System</small></h4><ul><li>Design print and digital ad campaigns, magazine covers and the internal staff magazine</li><li>Produce 3D motion for socials, including partner launches and a teleshopping-style test spot</li><li>Email campaigns in Mailchimp and website updates in WordPress</li></ul></div>
+        <div class="role rv"><span class="when">ONGOING</span><h4>Freelance designer &amp; photographer<small>Pop-up restaurant · Brighton</small></h4><ul><li>Design the menus for each pop-up</li><li>Shoot food and event photography on the pop-up days</li></ul></div>
+        <div class="role rv"><span class="when">ONGOING</span><h4>Personal design practice<small>@notowlar</small></h4><ul><li>Film, music and editorial posters exploring halftone and print textures</li><li>Album artwork and t-shirt graphics</li></ul></div>
+        <div class="role rv"><span class="when">PREVIOUS</span><h4>Model<small>Music video · The 1975</small></h4><ul><li>Cast in a music video for The 1975: styled to the wardrobe brief and spent a full day on set</li><li>Portrait, street and editorial shoots</li></ul></div>
+        <div class="role rv"><span class="when">STUDY</span><h4>Games Design<small>College &amp; university</small></h4><ul><li>Started in games design, then shifted my focus to graphic design and 3D modelling</li><li>Built game-ready assets in 3ds Max and Unreal Engine</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OMS -->
+  <section class="oms" id="oms">
+    <div class="wrap">
+      <div style="display:grid;gap:18px">
+        <div class="label rv">✦ work project · in-house</div>
+        <h2 class="rv">One Mortgage <span class="script chrome">System</span></h2>
+        <p class="lede rv">Campaign, editorial and motion work for OMS, the mortgage software platform built by intermediaries, for intermediaries. The brief across all of it: make a B2B software company look like something you'd want to pick up off a newsstand.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat rv"><b data-count="15" data-pre="£" data-suf="bn">£15bn</b><span>processed through OMS in 12 months</span></div>
+        <div class="stat rv"><b data-count="58000" data-suf="+">58,000+</b><span>applications</span></div>
+        <div class="stat rv"><b data-count="202000" data-suf="+">202,000+</b><span>hours saved for brokers</span></div>
+        <div class="stat rv"><b data-count="12000" data-suf="+">12,000+</b><span>users</span></div>
+      </div>
+
+      <img width="1400" height="1011" class="wide-shot rv wipe" data-lb data-title="One Mortgage System · blueprint infographic" src="a/blueprint.webp" alt="Blueprint-style infographic of the OMS logo with product stats">
+
+      <h3 class="sub">Magazine adverts &amp; covers</h3>
+      <div class="gallery">
+        <figure><button class="rv pop" style="--r:-4deg"><img width="795" height="1100" loading="lazy" src="a/oms-magazine.webp" alt="OMS Magazine cover: Is this your next upgrade?"></button><figcaption>OMS Magazine <em>cover</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="736" height="1046" loading="lazy" src="a/inside-one-mortgage.webp" alt="Inside One Mortgage internal magazine cover, July 2026"></button><figcaption>Inside One Mortgage <em>staff mag</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-3deg"><img width="642" height="1100" loading="lazy" src="a/tech-stands.webp" alt="Tech that stands the test of time advert"></button><figcaption>Test of Time <em>advert</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:4deg"><img width="720" height="1100" loading="lazy" src="a/stand-out.webp" alt="Stand out from the crowd advert"></button><figcaption>Stand Out <em>advert</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-2deg"><img width="795" height="1100" loading="lazy" src="a/oms-tablet.webp" alt="One mortgage system tablet advert"></button><figcaption>Dial-up Mode <em>advert</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="880" height="1100" loading="lazy" src="a/trust-processor.webp" alt="Trust the Processor advert with an OMS-branded CPU"></button><figcaption>Trust the Processor <em>social</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-3deg"><img width="1100" height="1042" loading="lazy" src="a/oms-laptop.webp" alt="OMS dashboard on a glowing laptop"></button><figcaption>Product render <em>web</em></figcaption></figure>
+      </div>
+
+      <h3 class="sub">Staff campaigns</h3>
+      <div class="gallery">
+        <figure><button class="rv pop" style="--r:-3deg"><img width="807" height="1100" loading="lazy" src="a/test-drivers.webp" alt="OMS Test Drivers poster for the QA team"></button><figcaption>Test Drivers <em>QA team</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="736" height="1046" loading="lazy" src="a/trouble-shooters.webp" alt="Trouble Shooters poster for the helpdesk team"></button><figcaption>Trouble Shooters <em>helpdesk</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-2deg"><img width="736" height="1046" loading="lazy" src="a/phishing.webp" alt="Don't get caught by the bait phishing poster"></button><figcaption>Caught by the Bait <em>security</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:4deg"><img width="733" height="1100" loading="lazy" src="a/cyber-security.webp" alt="Cyber Security and mental health poster"></button><figcaption>Cyber Security <em>wellbeing</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-4deg"><img width="603" height="1046" loading="lazy" src="a/your-voice.webp" alt="Your Voice Matters employee of the month poster"></button><figcaption>Your Voice Matters <em>internal</em></figcaption></figure>
+      </div>
+
+      <h3 class="sub">Video projects</h3>
+      <div class="motion">
+        <div class="win rv wipe">
+          <div class="tb"><span>teleshop_test.mp4</span><span><i>_</i><i>×</i></span></div>
+          <div class="body"><video muted loop playsinline preload="metadata" poster="a/tv-ad.jpg" src="a/tv-ad.mp4" aria-label="OMS teleshopping-style test video with a spinning 3D logo"></video>
+          <div class="cap">Teleshopping-style test spot · made for a retro social campaign</div></div>
+        </div>
+        <div class="stack">
+          <div class="win rv wipe" style="transition-delay:.15s">
+            <div class="tb"><span>step_one.mp4</span><span><i>×</i></span></div>
+            <div class="body"><video muted loop playsinline preload="metadata" poster="a/step-one.jpg" src="a/step-one.mp4" aria-label="OMS and Step One Finance partnership social video"></video>
+            <div class="cap">Partner launch · Step One Finance social</div></div>
+          </div>
+          <div class="win rv wipe" style="transition-delay:.3s">
+            <div class="tb"><span>xmas_fireplace.mp4</span><span><i>×</i></span></div>
+            <div class="body"><video muted loop playsinline preload="metadata" poster="a/fireplace.jpg" src="a/fireplace.mp4" aria-label="OMS logo bauble by a fireplace Christmas animation"></video>
+            <div class="cap">Seasonal social · 3D bauble scene</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="motion-pair">
+        <div class="win rv wipe">
+          <div class="tb"><span>logo_reveal.mp4</span><span><i>×</i></span></div>
+          <div class="body"><video muted loop playsinline preload="metadata" poster="a/logo-reveal.jpg" src="a/logo-reveal.mp4" aria-label="Video of George in a suit on the phone in a field, with the OMS logo revealing beside him"></video>
+          <div class="cap">Logo reveal · live action with animated OMS logo</div></div>
+        </div>
+        <div class="win rv wipe" style="transition-delay:.15s">
+          <div class="tb"><span>work_from_anywhere.mp4</span><span><i>×</i></span></div>
+          <div class="body"><video muted loop playsinline preload="metadata" poster="a/beach-office.jpg" src="a/beach-office.mp4" aria-label="Video of George working on a laptop on a pebble beach, captioned With OMS the office goes wherever you do"></video>
+          <div class="cap">Work from anywhere · "the office goes wherever you do"</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALBUM ART -->
+  <section class="proj" id="album">
+    <div class="wrap">
+      <div>
+        <div class="label rv">✦ personal projects · album &amp; merch</div>
+        <h2 class="rv">Album &amp; <span class="script chrome">Merch</span></h2>
+      </div>
+      <div class="vinyl-grid">
+        <div class="vinyl-stage" id="vinylStage">
+          <div class="disc" id="disc"><div class="spinner"><div class="lbl" id="discLabel" style="background-image:url(a/satans-pride.webp)"></div></div></div>
+          <div class="sleeve"><img width="1100" height="1100" id="sleeveImg" src="a/satans-pride.webp" alt="Satan's Pride album cover"></div>
+          <div class="tee" id="tee" hidden>
+            <svg viewBox="0 0 400 440" role="img" aria-label="Black t-shirt mockup printed with the Glimmer design">
+            <defs>
+              <linearGradient id="teeShade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
+              <linearGradient id="teeV" y1="0" y2="1" x1="0" x2="0"><stop offset="0" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
+              <radialGradient id="printFade"><stop offset=".6" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+              <mask id="printMask"><rect x="114" y="96" width="172" height="172" fill="url(#printFade)"/></mask>
+              <filter id="knit" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"/></filter>
+              <clipPath id="teeClip"><path id="teeShape" d="M130 24 C160 50 240 50 270 24 L300 30 L384 76 L354 162 L316 148 L318 424 Q200 432 82 424 L84 148 L46 162 L16 76 L100 30 Z"/></clipPath>
+            </defs>
+            <path d="M130 24 C160 50 240 50 270 24 L300 30 L384 76 L354 162 L316 148 L318 424 Q200 432 82 424 L84 148 L46 162 L16 76 L100 30 Z" fill="#0e0e0e" stroke="#000" stroke-width="3"/>
+            <g clip-path="url(#teeClip)">
+              <rect width="400" height="440" fill="#0e0e0e" filter="url(#knit)"/>
+              <image href="a/glimmer.webp" x="114" y="96" width="172" height="172" mask="url(#printMask)" style="mix-blend-mode:lighten;opacity:.95"/>
+              <path d="M84 148 C90 120 96 90 100 30" stroke="#000" stroke-opacity=".5" stroke-width="2" fill="none"/>
+              <path d="M316 148 C310 120 304 90 300 30" stroke="#000" stroke-opacity=".5" stroke-width="2" fill="none"/>
+              <path d="M84 404 Q200 412 318 404" stroke="#000" stroke-opacity=".45" stroke-width="2" fill="none" stroke-dasharray="3 4"/>
+              
+              <path d="M104 200 C112 260 102 330 114 420" stroke="#fff" stroke-opacity=".04" stroke-width="16" fill="none"/>
+              <path d="M300 220 C292 280 304 340 294 420" stroke="#000" stroke-opacity=".25" stroke-width="14" fill="none"/>
+              <rect width="400" height="440" fill="url(#teeShade)"/>
+              <rect width="400" height="440" fill="url(#teeV)"/>
+            </g>
+            <path d="M136 28 C164 62 236 62 264 28" stroke="#262626" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M136 28 C164 62 236 62 264 28" stroke="#000" stroke-opacity=".6" stroke-width="1.5" fill="none" transform="translate(0 6)"/>
+          </svg>
+          </div>
+        </div>
+        <div style="display:grid;gap:18px">
+          <div class="covers" role="group" aria-label="Choose a design">
+            <button aria-pressed="true" data-cover="satans-pride">Satan's Pride · album</button>
+            <button aria-pressed="false" data-cover="glimmer">Glimmer · tee</button>
+          </div>
+          <h3 id="coverTitle" style="font-family:var(--f-display);font-size:28px;margin:0;text-transform:uppercase">Satan's Pride</h3>
+          <p id="coverText">An album cover made to push a heavier, darker style: hand-built metal lettering dripping over a red-washed cathedral, finished with grain and a parental advisory sticker so it reads as a real release.</p>
+          <div class="ptag"><span>Photoshop</span><span>Custom lettering</span><span>Texture</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTER ARCHIVE -->
+  <section class="archive" id="archive">
+    <div class="wrap">
+      <div style="display:grid;gap:18px">
+        <div class="label rv">✦ personal projects</div>
+        <h2 class="rv">Poster <span class="script">Archive</span></h2>
+        <p class="lede rv">Film, music and magazine pieces made for the love of it. Halftone dots, folded-paper creases and type pulled from the era of each subject. Tap any poster to see it full size.</p>
+      </div>
+      <div class="gallery">
+        <figure><button class="rv pop" style="--r:-4deg"><img width="778" height="1100" loading="lazy" src="a/body-snatchers.webp" alt="Invasion of the Body Snatchers poster"></button><figcaption>Body Snatchers <em>film</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="778" height="1100" loading="lazy" src="a/retouch.webp" alt="Retouch magazine cover featuring Rhea"></button><figcaption>Retouch <em>magazine</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-2deg"><img width="778" height="1100" loading="lazy" src="a/mars.webp" alt="Is there life on Mars? pop art poster"></button><figcaption>Life on Mars? <em>music</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:4deg"><img width="778" height="1100" loading="lazy" src="a/fleabag.webp" alt="Fleabag poster"></button><figcaption>Fleabag <em>TV</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-3deg"><img width="778" height="1100" loading="lazy" src="a/billy-joel.webp" alt="Billy Joel The Stranger poster"></button><figcaption>The Stranger <em>music</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="778" height="1100" loading="lazy" src="a/bob.webp" alt="Best of Both milk advert"></button><figcaption>Best. of. Both <em>advert</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-4deg"><img width="778" height="1100" loading="lazy" src="a/volvo.webp" alt="Old Volvo's never die poster"></button><figcaption>Volvo 340GL <em>print</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:2deg"><img width="778" height="1100" loading="lazy" src="a/neon-clouds.webp" alt="Neon clouds type poster"></button><figcaption>Neon Clouds <em>type</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-3deg"><img width="733" height="1100" loading="lazy" src="a/gone.webp" alt="Gone red halftone poster"></button><figcaption>Gone <em>poster</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:4deg"><img width="720" height="1008" loading="lazy" src="a/sonder.webp" alt="Sonder city collage poster"></button><figcaption>Sonder <em>collage</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:-2deg"><img width="733" height="1100" loading="lazy" src="a/samurai.webp" alt="Samurai halftone study"></button><figcaption>Samurai <em>halftone</em></figcaption></figure>
+        <figure><button class="rv pop" style="--r:3deg"><img width="733" height="1100" loading="lazy" src="a/eye.webp" alt="Eye halftone study"></button><figcaption>Eye <em>halftone</em></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D -->
+  <section class="three-d" id="threed">
+    <div class="wrap">
+      <div style="display:grid;gap:18px">
+        <div class="label rv">✦ 3D modelling</div>
+        <h2 class="rv">The <span class="script chrome">Pandemic</span></h2>
+        <p class="lede rv">A game-ready weapon prop: a strimmer rebuilt as a saw-blade weapon. Modelled in 3ds Max, textured with diffuse, normal, roughness, albedo and specular maps, and rendered in Unreal Engine. Made during my games design studies.</p>
+        <div class="ptag rv"><span>3ds Max</span><span>Unreal Engine</span><span>Photoshop</span></div>
+      </div>
+      <div class="win rv wipe" id="pandemicWin">
+        <div class="tb"><span>the_pandemic.max</span><span><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="body"><img width="1072" height="758" id="pandemicImg" data-lb data-title="The Pandemic · 3D model sheet" src="a/pandemic.webp" alt="The Pandemic 3D model presentation sheet with texture maps"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL -->
+  <section class="model" id="model">
+    <div class="stick">
+      <div class="wrap head">
+        <div>
+          <div class="label">✦ in front of the lens</div>
+          <h2>Model <span class="script chrome">Portfolio</span></h2>
+        </div>
+        
+      </div>
+      <div class="strip" id="strip">
+        <div class="comp win"><div class="tb"><span>comp_card.txt</span><span><i>×</i></span></div><div class="body"><dl>
+          <dt>Name</dt><dd>George Clarke</dd><dt>Height</dt><dd>5'11"</dd><dt>Chest</dt><dd>36.5" / 93cm</dd><dt>Waist</dt><dd>34" / 86cm</dd><dt>Shoe</dt><dd>UK 9 / EU 42</dd><dt>Hair</dt><dd>Blonde</dd><dt>Eyes</dt><dd>Green</dd><dt>Based</dt><dd>UK</dd></dl></div></div>
+        <button class="frame" data-title="The 1975 · music video"><img width="1080" height="1080" src="a/the-1975.webp" alt="Group shot from the set of a music video for The 1975"><em>01 · The 1975 music video</em></button>
+        <div class="comp win"><div class="tb"><span>credits.txt</span><span><i>×</i></span></div><div class="body" style="display:grid;gap:10px;font-family:var(--f-pixel);font-size:21px;line-height:1.2">
+          <div>▸ The 1975 · music video</div>
+          <div>▸ Styled to the wardrobe brief</div>
+          <div>▸ Full day on set</div>
+          <div style="opacity:.6">more coming soon ✦</div></div></div>
+        <button class="frame" data-title="Headshot"><img width="1400" height="936" src="a/headshot.webp" alt="Headshot of George"><em>02 · Close-up</em></button>
+        <button class="frame" data-title="Black &amp; white portrait"><img width="735" height="1100" src="a/bw-portrait.webp" alt="Black and white portrait of George in a black tee and pearls"><em>03 · Portrait</em></button>
+        <button class="frame" data-title="Graffiti wall"><img width="800" height="1200" src="a/graffiti.webp" alt="George in a white shirt and sunglasses against a graffitied brick wall"><em>04 · Street</em></button>
+        <button class="frame" data-title="Sunglasses"><img width="800" height="1200" src="a/street.webp" alt="George adjusting sunglasses on a sunny street"><em>05 · Street</em></button>
+        <button class="frame" data-title="Full length"><img width="802" height="1200" src="a/full-length.webp" alt="Black and white full-length shot of George in a black tee, pearls and wide black trousers"><em>06 · Full length</em></button>
+        <button class="frame" data-title="White wall"><img width="798" height="1200" src="a/white-wall.webp" alt="George in black against a sunlit white wall, glasses on, looking away"><em>07 · Editorial</em></button>
+        <button class="frame" data-title="Suit &amp; sky"><img width="1200" height="1077" src="a/suit.webp" alt="George in a suit and orange sunglasses on the phone, holding a laptop against a blue sky"><em>08 · Editorial</em></button>
+        <button class="frame" data-title="Lamplight I"><img width="800" height="1200" src="a/lamp-1.webp" alt="Night shot of George in a white shirt and sunglasses under a street lamp, rolling up a sleeve"><em>09 · Night</em></button>
+        <button class="frame" data-title="Lamplight II"><img width="800" height="1200" src="a/lamp-2.webp" alt="Night shot of George in a white shirt and sunglasses beside a street lamp"><em>10 · Night</em></button>
+        <button class="frame" data-title="Beach at golden hour"><img width="1200" height="902" src="a/beach.webp" alt="George in a gingham shirt and sunglasses on a pebble beach at sunset"><em>11 · Beach</em></button>
+        <button class="frame" data-title="Hills at sunset"><img width="1200" height="1050" src="a/hills.webp" alt="George in a check jacket, tie and yellow sunglasses in front of rolling hills at sunset"><em>12 · Location</em></button>
+        <button class="frame" data-title="Volvo C30"><img width="1200" height="1050" src="a/volvo-c30.webp" alt="George leaning on the bonnet of a red Volvo C30 on a country road"><em>13 · Location</em></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="label">✦ end of transmission</div>
+      <h2 class="chrome rv">Let's make</h2>
+      <span class="script rv">something</span>
+      <div class="mail">
+        <code id="email">ge.w.clarke@gmail.com</code>
+        <button class="btn" id="copyBtn">copy email</button>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/george.cl" target="_blank" rel="noopener">Instagram @george.cl</a><a href="https://www.tiktok.com/@notowlar" target="_blank" rel="noopener">TikTok @notowlar</a><a href="https://www.linkedin.com/in/clarkewgeorge/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 George Clarke · built in forest green · best viewed at 1024×768 ✦</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lbbar"><span id="lbTitle"></span><button class="btn" id="lbClose">close ×</button></div>
+  <div class="stage"><img id="lbImg" alt=""></div>
+  <div class="nav"><button class="btn" id="lbPrev">◂ prev</button><button class="btn" id="lbNext">next ▸</button></div>
+</div>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const stage = document.getElementById('vinylStage');
+
+  // hero letters
+  const t = $('#title'); let i = 0;
+  t.innerHTML = t.innerHTML.split(/(<br>)/).map(p => p === '<br>' ? p :
+    '<span style="white-space:nowrap">' + [...p].map(c => `<span class="ch" aria-hidden="true" style="animation-delay:${(i++)*0.05}s">${c}</span>`).join('') + '</span>').join('');
+
+  // clock
+  const clk = $('#clock'); const tick = () => clk.textContent = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  tick(); setInterval(tick, 30000);
+
+  // copy email
+  $('#copyBtn').addEventListener('click', e => {
+    const b = e.currentTarget, txt = $('#email').textContent;
+    const done = m => { b.textContent = m; setTimeout(()=> b.textContent='copy email', 1800); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents($('#email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done('press ctrl+c'); };
+    try { navigator.clipboard.writeText(txt).then(()=>done('copied ✦'), sel); } catch(err){ sel(); }
+  });
+
+  // album / merch switcher
+  const covers = {
+    'satans-pride': {t:"Satan's Pride", d:"An album cover made to push a heavier, darker style: hand-built metal lettering dripping over a red-washed cathedral, finished with grain and a parental advisory sticker so it reads as a real release."},
+    'glimmer': {t:"Glimmer", d:"A t-shirt graphic: molten gothic lettering lit by a single candle. It's built on black so it prints straight onto a dark tee, and it works as a square cover too."}
+  };
+  $$('.covers button').forEach(b => b.addEventListener('click', () => {
+    $$('.covers button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    const k = b.dataset.cover, isTee = k === 'glimmer';
+    stage.classList.toggle('is-tee', isTee); $('#tee').hidden = !isTee;
+    $('#coverTitle').textContent = covers[k].t; $('#coverText').textContent = covers[k].d;
+  }));
+
+  // counters
+  const fmt = (n, el) => (el.dataset.pre||'') + Math.round(n).toLocaleString('en-GB') + (el.dataset.suf||'');
+  const runCount = el => {
+    const end = +el.dataset.count; if (reduce) { el.textContent = fmt(end, el); return; }
+    const t0 = performance.now();
+    const step = now => { const p = Math.min(1,(now-t0)/1600), e = 1-Math.pow(1-p,3); el.textContent = fmt(end*e, el); if (p<1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+
+  // reveal on scroll (only things below the fold at load start hidden)
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(en => { if (!en.isIntersecting) return;
+      const el = en.target; el.classList.remove('pending');
+      el.querySelectorAll('[data-count]').forEach(runCount);
+      if (el.id === 'prog') el.classList.add('on');
+      io.unobserve(el);
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'}) : null;
+  if (io && !reduce) {
+    $$('.rv').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) el.classList.add('pending'); io.observe(el); });
+    io.observe($('#prog'));
+  } else $('#prog').classList.add('on');
+
+  // videos play only while visible
+  if ('IntersectionObserver' in window) {
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !reduce) { const p = e.target.play(); if (p) p.catch(()=>{}); } else e.target.pause();
+    }), {threshold:.35});
+    $$('video').forEach(v => vio.observe(v));
+  }
+
+  // lightbox
+  const lb = $('#lb'), lbImg = $('#lbImg'), lbTitle = $('#lbTitle');
+  const items = [];
+  $$('.gallery figure').forEach(f => { const b = f.querySelector('button'), img = f.querySelector('img'); items.push({btn:b, src:img.src, alt:img.alt, title:f.querySelector('figcaption').firstChild.textContent.trim()}); });
+  $$('[data-lb]').forEach(img => items.push({btn:img, src:img.src, alt:img.alt, title:img.dataset.title}));
+  $$('.frame').forEach(b => { const img = b.querySelector('img'); items.push({btn:b, src:img.src, alt:img.alt, title:b.dataset.title}); });
+  let cur = 0, lastFocus = null;
+  const show = n => { cur = (n + items.length) % items.length; const it = items[cur]; lbImg.src = it.src; lbImg.alt = it.alt; lbTitle.textContent = `${cur+1}/${items.length} · ${it.title}`; };
+  const open = n => { lastFocus = document.activeElement; show(n); lb.hidden = false; document.body.style.overflow = 'hidden'; $('#lbClose').focus(); };
+  const close = () => { lb.hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); };
+  items.forEach((it, n) => it.btn.addEventListener('click', () => open(n)));
+  $('#lbClose').onclick = close; $('#lbPrev').onclick = () => show(cur-1); $('#lbNext').onclick = () => show(cur+1);
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('stage')) close(); });
+  addEventListener('keydown', e => { if (lb.hidden) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur-1); if (e.key === 'ArrowRight') show(cur+1); });
+
+  // scroll-driven: parallax, vinyl slide, pandemic zoom, horizontal model strip
+  const par = $$('[data-speed]'), disc = $('#disc');
+  const model = $('#model'), strip = $('#strip'), pImg = $('#pandemicImg'), pWin = $('#pandemicWin');
+  const overflow = () => Math.max(0, strip.scrollWidth - innerWidth);
+  function sizeModel(){ if (reduce) return; model.style.height = (overflow() + innerHeight * 1.2) + 'px'; }
+  let ticking = false;
+  function onScroll(){
+    ticking = false; if (reduce) return; const vh = innerHeight;
+    $$('.rv.pending').forEach(el => { if (el.getBoundingClientRect().top < vh * 0.92) { el.classList.remove('pending'); el.querySelectorAll('[data-count]').forEach(runCount); } });
+    par.forEach(el => { const r = el.getBoundingClientRect(); el.style.translate = `0 ${((r.top + r.height/2 - vh/2) * +el.dataset.speed).toFixed(1)}px`; });
+    const sr = stage.getBoundingClientRect();
+    const vp = Math.min(1, Math.max(0, (vh - sr.top) / (vh*0.8)));
+    disc.style.translate = `${(vp * sr.height * 0.56).toFixed(1)}px 0`;
+    const pr = pWin.getBoundingClientRect();
+    const pp = Math.min(1, Math.max(0, (vh - pr.top) / (vh + pr.height)));
+    pImg.style.transform = `scale(${(1.18 - pp*0.18).toFixed(3)})`;
+    const mr = model.getBoundingClientRect(), total = model.offsetHeight - vh;
+    const p = total > 0 ? Math.min(1, Math.max(0, -mr.top / total)) : 0;
+    strip.style.transform = `translateX(${(-p * overflow()).toFixed(1)}px)`;
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  addEventListener('resize', () => { sizeModel(); onScroll(); });
+  addEventListener('load', () => { sizeModel(); onScroll(); });
+  sizeModel(); onScroll();
+
+  // sparkle cursor trail
+  if (!reduce && matchMedia('(pointer:fine)').matches) {
+    let last = 0;
+    addEventListener('pointermove', e => {
+      const now = performance.now(); if (now - last < 60) return; last = now;
+      const s = document.createElement('span'); s.className = 'trail'; s.textContent = Math.random() > .5 ? '✦' : '✧';
+      s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+      document.body.appendChild(s); setTimeout(() => s.remove(), 800);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
